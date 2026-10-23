@@ -43,3 +43,6 @@ Route::get('/home', [HomeController::class, 'index']);
 
 
 // require __DIR__ . '/auth.php';
+Route::resource('pelanggan', PelangganController::class);
+
+Route::post('/pelanggan', [PelangganController::class, 'store']);
