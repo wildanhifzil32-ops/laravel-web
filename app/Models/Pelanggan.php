@@ -17,4 +17,3 @@ class Pelanggan extends Model
         'phone',
     ];
 }
-
