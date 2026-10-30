@@ -21,19 +21,19 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <!-- Primary Meta Tags -->
-	<title>Volt - Free Bootstrap 5 Dashboard</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<meta name="title" content="Volt - Free Bootstrap 5 Dashboard">
-	<meta name="author" content="Themesberg">
+    <title>Volt - Free Bootstrap 5 Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="title" content="Volt - Free Bootstrap 5 Dashboard">
+    <meta name="author" content="Themesberg">
 
-	<!-- Favicon -->
-	<link rel="apple-touch-icon" sizes="120x120" href="{{asset('assets-admin/img/favicon/apple-touch-icon.png')}}">
-	<link rel="icon" type="image/png" sizes="32x32" href="{{asset('assets-admin/img/favicon/favicon-32x32.png')}}">
-	<link rel="icon" type="image/png" sizes="16x16" href="{{asset('assets-admin/img/favicon/favicon-16x16.png')}}">
-	<link rel="manifest" href="{{asset('assets-admin/img/favicon/site.webmanifest')}}">
-	<link rel="mask-icon" href="{{asset('assets-admin/img/favicon/safari-pinned-tab.svg')}}" color="#ffffff">
-	<meta name="msapplication-TileColor" content="#ffffff">
-	<meta name="theme-color" content="#ffffff">
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="120x120" href="{{asset('assets-admin/img/favicon/apple-touch-icon.png')}}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{asset('assets-admin/img/favicon/favicon-32x32.png')}}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{asset('assets-admin/img/favicon/favicon-16x16.png')}}">
+    <link rel="manifest" href="{{asset('assets-admin/img/favicon/site.webmanifest')}}">
+    <link rel="mask-icon" href="{{asset('assets-admin/img/favicon/safari-pinned-tab.svg')}}" color="#ffffff">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="theme-color" content="#ffffff">
 
     <!-- Volt CSS -->
     <link type="text/css" href="{{asset('assets-admin/css/volt.css') }}" rel="stylesheet">
@@ -286,28 +286,21 @@
             <div class="col-12 mb-4">
                 <div class="card border-0 shadow components-section">
                     <div class="card-body">
-                        <form action="" method="POST">
+                        <form action="{{ route('pelanggan.store') }}   " method="POST">
                             @csrf
 
-    <label>Nama Pelanggan</label>
-    <input type="text" name="nama">
-
-    <label>Email</label>
-    <input type="email" name="email">
-
-    <button type="submit">Simpan</button>
                             <div class="row mb-4">
                                 <div class="col-lg-4 col-sm-6">
                                     <!-- First Name -->
                                     <div class="mb-3">
                                         <label for="first_name" class="form-label">First name</label>
-                                        <input type="text" id="first_name" class="form-control" required>
+                                        <input type="text" id="first_name" class="form-control" name="first_name" required>
                                     </div>
 
                                     <!-- Last Name -->
                                     <div class="mb-3">
                                         <label for="last_name" class="form-label">Last name</label>
-                                        <input type="text" id="last_name" class="form-control" required>
+                                        <input type="text" id="last_name" class="form-control" name="last_name" required>
                                     </div>
                                 </div>
 
@@ -315,7 +308,7 @@
                                     <!-- Birthday -->
                                     <div class="mb-3">
                                         <label for="birthday" class="form-label">Birthday</label>
-                                        <input type="date" id="birthday" class="form-control">
+                                        <input type="date" id="birthday" class="form-control" name="birthday">
                                     </div>
 
                                     <!-- Gender -->
@@ -334,13 +327,13 @@
                                     <!-- Email -->
                                     <div class="mb-3">
                                         <label for="email" class="form-label">Email</label>
-                                        <input type="text" id="email" class="form-control" required>
+                                        <input type="email" id="email" class="form-control" name="email" required>
                                     </div>
 
                                     <!-- Phone -->
                                     <div class="mb-3">
                                         <label for="phone" class="form-label">Phone</label>
-                                        <input type="text" id="phone" class="form-control">
+                                        <input type="text" id="phone" class="form-control" name="phone">
                                     </div>
 
                                     <!-- Buttons -->

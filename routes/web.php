@@ -45,7 +45,10 @@ Route::get('/home', [HomeController::class, 'index']);
 
 // require __DIR__ . '/auth.php';
 Route::resource('pelanggan', PelangganController::class);
+<<<<<<< HEAD
 
 Route::post('/pelanggan', [PelangganController::class, 'store']);
 
 Route::resource('portfolio', PortfolioController::class);
+=======
+>>>>>>> ab558b740301707ce9cc63b5f65395e0aec01f73
