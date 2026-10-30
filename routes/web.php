@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\PelangganController;
+use App\Http\Controllers\PortfolioController;
 
 // Route::resource('pelanggan', PelangganController::class);
 
@@ -46,3 +47,5 @@ Route::get('/home', [HomeController::class, 'index']);
 Route::resource('pelanggan', PelangganController::class);
 
 Route::post('/pelanggan', [PelangganController::class, 'store']);
+
+Route::resource('portfolio', PortfolioController::class);
