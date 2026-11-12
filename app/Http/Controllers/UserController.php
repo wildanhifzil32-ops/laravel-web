@@ -1,9 +1,11 @@
 <?php
+
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rule;
 
 class UserController extends Controller
 {
@@ -24,11 +26,18 @@ class UserController extends Controller
     // Menyimpan data User
     public function store(Request $request)
     {
-        $data['name'] = $request->name;
-        $data['email'] = $request->email;
-        $data['password'] = Hash::make($request->password);
+        // Validasi data User
+        $validated = $request->validate([
+            'name' => 'required|string|max:100',
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required|min:8|confirmed',
+        ]);
 
-        User::create($data);
+        // Enkripsi password
+        $validated['password'] = Hash::make($validated['password']);
+
+        // Simpan data User
+        User::create($validated);
 
         return redirect()
             ->route('user.index')
@@ -48,14 +57,26 @@ class UserController extends Controller
     {
         $user = User::findOrFail($id);
 
-        $user->name = $request->name;
-        $user->email = $request->email;
+        // Validasi data User
+        $validated = $request->validate([
+            'name' => 'required|string|max:100',
+            'email' => [
+                'required',
+                'email',
+                Rule::unique('users', 'email')->ignore($user->id),
+            ],
+            'password' => 'nullable|min:8|confirmed',
+        ]);
 
-        if ($request->filled('password')) {
-            $user->password = Hash::make($request->password);
+        // Update password jika diisi
+        if (!empty($validated['password'])) {
+            $validated['password'] = Hash::make($validated['password']);
+        } else {
+            unset($validated['password']);
         }
 
-        $user->save();
+        // Simpan perubahan data
+        $user->update($validated);
 
         return redirect()
             ->route('user.index')
